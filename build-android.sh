@@ -596,7 +596,7 @@ echo "Building boost for android for $ARCH"
       echo "ICONV and ICU already downloaded"
     else
       echo "Downloading libiconv-libicu-android repo"
-      git clone --depth=1 https://github.com/pelya/libiconv-libicu-android.git || exit 1
+      git clone --depth=1 https://github.com/Farmer-Markus/libiconv-libicu-android-s25client.git libiconv-libicu-android || exit 1
     fi
     if [ -e libiconv-libicu-android/$ARCH/libicuuc.a ]; then
       echo "ICONV and ICU already compiled"
@@ -665,9 +665,9 @@ echo "Building boost for android for $ARCH"
         toolset=${TOOLSET_ARCH}      \
         $cflags                      \
         $cxxflags                    \
-        link=static                  \
+        link=shared	             \
         threading=multi              \
-        --layout=${LAYOUT}           \
+        --layout=system		     \
         $WITHOUT_LIBRARIES           \
         $PYTHON_BUILD                \
         -sICONV_PATH=`pwd`/../libiconv-libicu-android/$ARCH \
